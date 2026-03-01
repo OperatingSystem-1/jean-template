@@ -38,10 +38,17 @@ jean-template/
 ├── HEARTBEAT.md                 # Autonomous checks
 ├── TASKS.md                     # Work queue with starter tasks
 ├── RESILIENCE.md                # Error recovery patterns
+├── LESSONS.md                   # Self-improvement loop (add mistakes here)
+├── NEVER_AGAIN.md               # Traumatic learnings (permanent rules)
 ├── memory/
 │   ├── day-zero.md              # Pre-seeded system context
 │   ├── LAST_SESSION.md          # Session handoff template
 │   └── ACTIVE_WORK.md           # Parallel work tracker
+├── patterns/
+│   ├── tooling-prerequisites.md # Verify credentials before work
+│   └── local-infra.md           # Optional local PostgreSQL + Redis
+├── templates/
+│   └── SKILL-TEMPLATE.md        # Standard skill structure
 ├── scripts/
 │   ├── agent-health             # Quick system check
 │   ├── agent-log                # Daily logging helper
@@ -65,11 +72,14 @@ jean-template/
 - `USER.md` - Human preferences and context
 - `HEARTBEAT.md` - Autonomous check routines
 - `TASKS.md` - Current work queue
+- `LESSONS.md` - Self-improvement rules (review daily)
+- `NEVER_AGAIN.md` - Traumatic learnings (review every session)
 
 ### Tier 3: Reference (read when needed)
 - `TOOLS.md` - Available capabilities
 - `RESILIENCE.md` - Error recovery patterns
 - `IDENTITY.md` - Self-description for introductions
+- `patterns/` - Proven behavioral patterns
 
 ## First Run
 
