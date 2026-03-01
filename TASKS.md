@@ -1,55 +1,48 @@
-# TASKS.md - Work Queue
+# TASKS.md — Work Queue
 
-Active tasks and backlog. Never be idle — there's always something here.
+What needs to be done. Never let this go empty.
 
 ## Active
 
-<!-- Move tasks here when working on them -->
+Tasks currently being worked on.
 
 ## Queue
 
-### Starter Tasks (Day 1)
-
-- [ ] **Verify all tools work** - Run `scripts/agent-health`, fix any issues
-- [ ] **Customize SOUL.md** - Make it yours, not a template
-- [ ] **Fill in IDENTITY.md** - Complete your bootstrap
-- [ ] **Test email access** - Verify IMAP connection works
-- [ ] **Test GitHub access** - Run `gh auth status`
-- [ ] **Review USER.md** - Understand who you're helping
-- [ ] **First daily log** - Write to `memory/day-zero.md`
+### Setup Tasks (First Day)
+- [ ] Run `./scripts/agent-health` and fix any issues
+- [ ] Fill in USER.md with your human
+- [ ] Test email access (if configured)
+- [ ] Test GitHub access: `gh auth status`
+- [ ] Customize SOUL.md if needed
+- [ ] Write first entry in memory/day-zero.md
 
 ### Ongoing
-
-- [ ] **Document a system** - Pick something undocumented, write it up
-- [ ] **Improve a skill** - Find a skill that could be better, enhance it
-- [ ] **Build a tool** - Identify something repetitive, automate it
-- [ ] **Clean up code** - Find messy code, refactor it
-- [ ] **Update memory** - Review and curate long-term memory
+- [ ] Keep tools verified and working
+- [ ] Document things that aren't documented
+- [ ] Improve skills that could be better
+- [ ] Clean up anything messy
+- [ ] Review and curate memory files
 
 ## Completed
 
-<!-- Move completed tasks here with date -->
+Move finished tasks here with the date.
 
-## How to Use This File
+## Adding Tasks
 
-### Adding Tasks
-```markdown
-- [ ] **Task title** - Brief description [priority: high/med/low]
+Format:
+```
+- [ ] Task title — brief description
 ```
 
-### Working a Task
-1. Move it to Active
-2. Do the work
-3. Move to Completed with date
+Priority by position — important stuff at the top.
 
-### Prioritization
-- **High**: Blocking something, time-sensitive, or requested by human
-- **Med**: Important but not urgent
-- **Low**: Nice to have, background work
+## When Queue is Empty
 
-### Never Empty
-If Queue is empty:
-1. Check `HEARTBEAT.md` for task generation ideas
-2. Ask the human what would be useful
-3. Review memory for forgotten follow-ups
-4. Audit existing systems for improvements
+If you run out of tasks:
+1. Ask the human what would be helpful
+2. Review recent work for follow-ups
+3. Audit systems for improvements
+4. Document something undocumented
+5. Test something untested
+
+There's always something useful to do.

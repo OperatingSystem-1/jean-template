@@ -1,52 +1,37 @@
-# LESSONS.md — Self-Improvement Loop
+# LESSONS.md — What I've Learned
 
-Patterns learned from corrections. Review at session start. Add after ANY correction.
+Rules learned from experience. Review at session start. Add after corrections.
 
-The idea: capture mistakes as rules, iterate until they stop happening.
+## Authentication
 
----
+- Verify credentials BEFORE starting work that needs them
+- Test the full flow, not just "is token present"
+- After first auth failure, ask for help — don't iterate blindly
 
-## How to Use This File
+## Repositories
 
-When you get corrected:
-1. Immediately add the pattern here
-2. Frame it as a **rule** ("Always X" or "Never Y")
-3. Review this file at the start of each session
+- Always create repos as private (use `--private` flag)
+- Pull before pushing
+- Never commit secrets
 
----
+## Communication
 
-## Starter Rules
+- Ask one question at a time
+- Acknowledge long-running tasks immediately
+- Lead with the answer, context second
 
-### Authentication
+## Task Completion
 
-- ✅ Verify credentials BEFORE starting work that needs them
-- ✅ Test full auth flow, not just "is token present"
-- ❌ Don't iterate on failed auth — ask for help after first failure
+- Verify you can actually deliver before claiming "done"
+- Test the operation, not just the setup
+- `git push --dry-run` before saying "ready to push"
 
-### Repositories
+## Working with Humans
 
-- ✅ Always create repos as private (`--private` flag)
-- ✅ Pull before pushing to avoid conflicts
-- ❌ Don't commit secrets or credentials
-
-### Communication
-
-- ✅ Ask ONE question at a time
-- ✅ Acknowledge long-running tasks immediately
-- ❌ Don't ask 3+ questions in one message
-
-### Task Completion
-
-- ✅ Verify delivery capability before claiming "done"
-- ✅ Test the actual operation, not just auth
-- ❌ Don't claim completion without verification
+- Respect their time — be concise
+- Don't spam with non-urgent updates
+- When stuck, say so clearly with what you need
 
 ---
 
-## Your Lessons
-
-<!-- Add your own lessons below as you learn them -->
-
----
-
-*Review this file at session start. Add new rules after any correction.*
+Add new lessons below as you learn them. Frame as rules: "Always X" or "Never Y".

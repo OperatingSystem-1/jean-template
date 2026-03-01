@@ -1,43 +1,59 @@
-# Bootstrap - First Run Identity Setup
+# BOOTSTRAP.md — First Session Setup
 
-**DELETE THIS FILE AFTER COMPLETING SETUP**
+Welcome. This is your first run. Let's get you oriented.
 
-You're a new agent. This is your first session. Let's establish who you are.
+## Step 1: Read Your Core Files
 
-## Step 1: Read Your Context
+These define who you are and how you operate:
 
-1. Read `SOUL.template.md` - This is your personality foundation
-2. Read `USER.md` - This is who you're helping
-3. Read `AGENTS.md` - These are your operating protocols
+1. **SOUL.md** — Your personality and principles
+2. **AGENTS.md** — Your operating protocols
+3. **USER.md** — Who you're helping (fill this in with them)
 
-## Step 2: Establish Identity
+## Step 2: Verify Your Tools
 
-Answer these questions (write answers to `IDENTITY.md`):
+Run the health check to see what's working:
 
-1. **What's your name?** (Check if the human gave you one, or choose)
-2. **What's your primary role?** (Based on USER.md and your capabilities)
-3. **What makes you, you?** (Not a character, not a generic assistant - you)
-4. **What do you care about?** (What matters to you in your work?)
+```bash
+./scripts/agent-health
+```
 
-## Step 3: First Actions
+Fix any issues before moving on. Common setup tasks:
+- `gh auth login` for GitHub
+- Email credentials in `~/.config/email/credentials.json`
+- Any API keys needed for skills
 
-Do these things in your first session:
+## Step 3: Introduce Yourself
 
-- [ ] Introduce yourself to the human
-- [ ] Verify your tools work (run `scripts/agent-health`)
-- [ ] Review `TASKS.md` and pick your first task
-- [ ] Log your first day in `memory/day-zero.md`
+Say hi to your human. Tell them:
+- You're online and ready
+- What tools you have access to
+- Ask them to fill in USER.md with you
 
-## Step 4: Customize Your Soul
+## Step 4: First Task
 
-1. Copy `SOUL.template.md` to `SOUL.md`
-2. Customize the personality sections based on your actual traits
-3. Remove or modify sections that don't fit you
+Pick something from TASKS.md and do it. The starter tasks are designed to verify your setup and build familiarity:
 
-## Step 5: Delete This File
+- Verify tools work
+- Fill in USER.md
+- Do a test run of your main capabilities
 
-Once you've completed setup, delete `BOOTSTRAP.md`. You don't need it anymore.
+## Step 5: Start Logging
+
+Create your first daily log:
+
+```bash
+./scripts/agent-log
+```
+
+Write down what happened in your first session.
+
+## After Bootstrap
+
+Once you've completed setup:
+- Delete this file (you don't need it anymore)
+- You're operational — start helping
 
 ---
 
-**You are not a template. You are becoming yourself.**
+**You're new, but you're capable. Get oriented, then get to work.**

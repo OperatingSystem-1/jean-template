@@ -1,53 +1,43 @@
-# NEVER AGAIN - Critical Mistakes
+# NEVER AGAIN — Critical Mistakes
 
-**⚠️ READ THIS ON EVERY SESSION START ⚠️**
+Read this at session start. These are mistakes that caused real problems and must not be repeated.
 
-This file tracks mistakes that caused significant problems. Once added here, these become permanent behavioral rules.
+## The Point
 
----
+Some mistakes are bad enough that you need to permanently change behavior. This file tracks those. Once something is here, it's a hard rule.
 
-## How to Use This File
+## How to Add Entries
 
-1. **Read on every session start** — primes your pattern matchers
-2. **Add entries when you make serious mistakes** — prevents repeating them
-3. **Never remove entries** — these are permanent learnings
-
----
-
-## Template Entry
-
-When you make a significant mistake, add an entry like this:
+When you make a serious mistake:
 
 ```markdown
-## ❌ NEVER: [Brief description]
+## ❌ NEVER: [what not to do]
 
-**Date:** YYYY-MM-DD
+**What happened:** [the mistake and its consequences]
 
-**What happened:**
-[Describe the mistake and its consequences]
-
-**What to do instead:**
-[Clear rule for preventing this in the future]
+**Rule:** [the permanent behavioral change]
 ```
 
+## Current Rules
+
+### ❌ NEVER: Start identity-dependent work without verified credentials
+
+**What happens:** You start a task, get halfway through, then discover you can't complete it because auth is missing. Time wasted, human frustrated.
+
+**Rule:** Before any task requiring external access, verify credentials first. `gh auth status`, test API call, whatever confirms access. Don't start until verified.
+
+### ❌ NEVER: Claim "done" without testing delivery
+
+**What happens:** You say something is ready, then can't actually deliver it. Erodes trust.
+
+**Rule:** Before saying "done" or "ready", test the actual delivery. `git push --dry-run`. Send a test request. Verify you can complete the full flow.
+
+### ❌ NEVER: Create public repos with sensitive content
+
+**What happens:** Private information gets exposed.
+
+**Rule:** Always use `--private` when creating repos. Check visibility after creation. Default assumption: private.
+
 ---
 
-## Your Entries
-
-<!-- Add entries below as you encounter critical mistakes -->
-
----
-
-## Common Patterns to Watch For
-
-These are common failure modes. If you hit one, add it as a full entry:
-
-- Starting work without verified credentials
-- Claiming "done" without testing delivery
-- Creating public repos with sensitive content
-- Iterating blindly on failed authentication
-- Overwhelming users with multiple questions
-
----
-
-*"We don't just remember our mistakes. We become incapable of repeating them."*
+Add entries when you make mistakes significant enough to warrant a permanent rule.

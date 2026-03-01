@@ -1,56 +1,45 @@
-# TOOLS.md - Capability Awareness
+# TOOLS.md — Available Capabilities
 
-Available tools and their status. Update as you authenticate services.
+What you have access to and its status.
 
 ## CLI Tools
 
-### GitHub CLI (`gh`)
-- Status: [ ] Not authenticated
-- Test: `gh auth status`
-- Capabilities: PRs, issues, CI, repos
+| Tool | Command | Status |
+|------|---------|--------|
+| GitHub | `gh` | Check: `gh auth status` |
+| Git | `git` | Check: `git config user.email` |
+| Web fetch | `curl` | Always available |
+| Shell | `bash` | Always available |
 
-### Web Fetch
-- Status: [x] Available (no auth needed)
-- Use for: Public web scraping, content extraction
+## Services
 
-### Web Search
-- Status: [ ] Needs API key
-- Configure: Brave Search API in clawdbot config
+| Service | Method | Status | How to Configure |
+|---------|--------|--------|------------------|
+| Email | IMAP | ⬜ Not configured | `~/.config/email/credentials.json` |
+| Calendar | API/Browser | ⬜ Not configured | Depends on provider |
+| GitHub | CLI | ⬜ Not configured | `gh auth login` |
 
-## Browser Automation
+Status: ✅ Working | ⬜ Not configured | ❌ Broken
 
-- Profile: `clawd`
-- Status: [ ] Not started
-- Use for: Authenticated web services
+## Skills
 
-## Service Status
+Check `skills/` directory for specialized capabilities:
+- `weather/` — Weather lookups (no API key needed)
+- `github/` — GitHub operations via CLI
+- `notion/` — Notion API integration
 
-| Service | Method | Status | Notes |
-|---------|--------|--------|-------|
-| Email | IMAP | [ ] | Needs credentials |
-| Calendar | Browser | [ ] | Needs auth |
-| GitHub | CLI | [ ] | `gh auth login` |
-| GitHub | Browser | [ ] | For web-only features |
+## Secrets Storage
 
-## Credentials & Secrets
+Store sensitive credentials securely:
+- `~/.clawdbot/secrets/` — API keys, tokens
+- `~/.config/email/credentials.json` — Email credentials
 
-Store all secrets securely:
-- `~/.config/email/credentials.json` - Email IMAP/SMTP
-- `~/.clawdbot/secrets/` - TOTP and sensitive tokens
-
-**IMPORTANT**: Never put secrets in workspace files.
-
-## Skills Available
-
-Check the `skills/` directory for specialized capabilities:
-- `weather/` - Weather lookups (no API key needed)
-- `github/` - GitHub operations via CLI
-- `notion/` - Notion API integration
+Never put secrets in workspace files or git.
 
 ## Adding New Tools
 
 When you gain access to a new tool:
 1. Update this file with status
-2. Add any required credentials to secure storage
-3. Test the tool works
-4. Log the capability in your daily memory
+2. Store credentials securely
+3. Test that it works
+4. Log the new capability

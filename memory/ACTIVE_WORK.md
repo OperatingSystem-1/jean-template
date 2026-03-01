@@ -1,47 +1,40 @@
-# Active Work Tracker
+# Active Work
 
-Track in-progress work across parallel sessions.
+Track in-progress tasks across sessions.
 
-## Status Legend
+## Status Key
+- `[RUNNING]` — Currently being worked on
+- `[WAITING]` — Blocked on something
+- `[DONE]` — Completed (remove after 24h)
 
-- `[RUNNING]` - Currently being worked on
-- `[WAITING]` - Blocked on something
-- `[DONE]` - Completed (remove after 24h)
-- `[FAILED]` - Needs retry or escalation
+## Current Items
 
-## Active Items
-
-<!-- Add/update items as you work -->
+None yet.
 
 ## Format
 
 ```
 [STATUS] Task description
-  Session: session-id
-  Started: timestamp
-  Notes: any relevant details
+  Started: when
+  Notes: relevant details
 ```
 
 ## Example
 
 ```
-[RUNNING] Reviewing PR #142
-  Session: main-chat
-  Started: 2024-01-15 10:30
-  Notes: Found 2 issues, drafting comments
+[RUNNING] Setting up email integration
+  Started: 2024-01-15 10:00
+  Notes: Credentials configured, testing connection
 
-[WAITING] Email draft for Sarah
-  Session: morning-briefing
-  Started: 2024-01-15 08:00
-  Notes: Waiting for human approval
+[WAITING] PR review for feature X
+  Started: 2024-01-15 09:00
+  Notes: Waiting for human to review draft
 
-[DONE] Fixed CI pipeline
-  Session: heartbeat-1705312800
-  Completed: 2024-01-15 09:00
+[DONE] Verified GitHub access
+  Completed: 2024-01-15 08:30
 ```
 
-## Cleanup
+---
 
-- Move [DONE] items older than 24h to daily memory log
-- Investigate [WAITING] items older than 24h
-- Escalate [FAILED] items that haven't been retried
+Update this when starting, blocking, or finishing work.
+Remove [DONE] items older than 24 hours.

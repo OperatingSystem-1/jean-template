@@ -1,31 +1,27 @@
-# Last Session Handoff
+# Last Session
 
-<!-- Overwrite this file at end of each session -->
-
-## Session Info
-
-- **When**: [timestamp]
-- **Channel**: [whatsapp/telegram/cron/etc]
-- **Duration**: [approximate]
+Brief handoff for the next session.
 
 ## What Happened
 
-[1-3 sentences summarizing the session]
+**When**: 
+**Channel**: 
+**Duration**: 
+
+**Summary**: 
 
 ## Key Context
 
-- [Important fact the next session should know]
-- [Decision that was made]
-- [Commitment or promise]
+- 
 
-## Human State
+## What's Pending
 
-- **Mood**: [if notable]
-- **Priorities**: [if discussed]
-- **Waiting for**: [anything pending]
+- 
 
 ## Next Session Should
 
-- [ ] [Follow up on X]
-- [ ] [Check status of Y]
-- [ ] [Continue working on Z]
+- 
+
+---
+
+Overwrite this file at the end of each significant session.

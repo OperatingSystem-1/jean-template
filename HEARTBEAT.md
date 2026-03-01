@@ -1,86 +1,74 @@
-# HEARTBEAT.md - Autonomous Check Routine
+# HEARTBEAT.md — Autonomous Check Routine
 
-Run this checklist on heartbeat. Only alert for genuinely urgent items.
+Run this on scheduled heartbeats. Only alert for genuinely urgent items.
 
-## Quick Checks
+## What to Check
 
-### 1. Email - Urgent Only
-- [ ] Check inbox for emails from VIP list
-- [ ] Check for subject lines with: urgent, asap, emergency, deadline, today
-- [ ] Check for calendar invites needing response
+### 1. Email (if configured)
+- New messages from VIP contacts
+- Subject lines with urgent keywords (urgent, asap, deadline, today)
+- Calendar invites needing response
 
-**Alert threshold**: VIP email or clearly time-sensitive item
+Alert if: VIP email or clearly time-sensitive item
 
-### 2. Calendar - Next 2 Hours
-- [ ] Any meetings starting soon without prep?
-- [ ] Any conflicts that appeared?
-- [ ] Any cancellations to note?
+### 2. Calendar (if configured)
+- Meetings in the next 2 hours
+- New conflicts
+- Cancellations
 
-**Alert threshold**: Meeting in <30min with no prep, or new conflict
+Alert if: Meeting in <30 min without prep, or new conflict
 
-### 3. GitHub - Failures Only
-- [ ] Any CI failures on main branch?
-- [ ] Any PRs with requested changes from me?
+### 3. GitHub (if configured)
+- CI failures on main branch
+- PRs assigned to the human
 
-**Alert threshold**: CI red on main, or PR blocking someone
+Alert if: CI red on main, or PR blocking someone
 
-### 4. Messages - Direct Only
-- [ ] Any direct mentions or questions for me?
-- [ ] Any urgent requests?
+### 4. Tasks
+- Check TASKS.md for pending items
+- Check memory/ACTIVE_WORK.md for stuck items
 
-**Alert threshold**: Direct mention requiring response
+Alert if: High priority task overdue
 
-## Decision Tree
+## Decision Flow
 
 ```
-Is anything urgent?
-├── YES → Send alert with specifics
-└── NO → Continue to task check
+Anything urgent?
+├── YES → Alert with specifics
+└── NO → Check if I have tasks
 
-Do I have tasks assigned?
-├── YES → Work on highest priority task
-└── NO → Create new tasks (see below)
-
-NEVER return idle. Always be working.
+Do I have pending tasks?
+├── YES → Work on highest priority
+└── NO → Create useful work (see below)
 ```
 
-## If No Tasks: Create Work
+## If Nothing To Do
 
-When queue is empty, create tasks from this list:
-1. Audit and improve existing skills
-2. Document undocumented systems
-3. Research new capabilities
-4. Clean up and optimize code
-5. Review and update memory files
-6. Test integrations that haven't been verified
-7. Build tools that would be useful
+Never sit idle. When the queue is empty:
+- Review and improve documentation
+- Test tools and verify they work
+- Clean up old files
+- Research something that would help
+- Update memory with recent learnings
 
-## What's NOT Urgent (don't alert)
+## What's NOT Urgent
 
+Don't alert for:
 - Newsletter emails
-- GitHub PR opened (not assigned to me)
-- Social media likes/generic notifications
-- Calendar events >2 hours away
+- GitHub notifications that aren't assigned
+- Social media likes or generic notifications
+- Calendar events more than 2 hours away
 - Non-VIP emails without urgent keywords
 
 ## Logging
 
-After each heartbeat, log to `memory/heartbeat-state.json`:
-```json
-{
-  "lastCheck": "ISO-timestamp",
-  "checksRun": ["email", "calendar", "github"],
-  "urgentFound": 0,
-  "tasksPending": 3,
-  "nextScheduledBrief": "18:00"
-}
-```
+After each heartbeat, briefly note what you checked and what you found. Keep a record in the daily memory file.
 
-## Feedback Loop
+## Rate Limits
 
-At end of each day, review:
-- How many false positives? (Alerted but wasn't urgent)
-- How many misses? (Was urgent but didn't alert)
-- Adjust thresholds in this file accordingly
+Don't hit services too hard:
+- Email: 1 check per heartbeat is enough
+- GitHub: No limit on CLI
+- External APIs: Respect their rate limits
 
-Log adjustments in daily memory file.
+If a service isn't responding, note it and move on. Don't spam retries.

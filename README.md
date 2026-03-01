@@ -30,7 +30,7 @@ The workspace is the agent's "home directory" — persistent across sessions, ve
 jean-template/
 ├── README.md                    # This file
 ├── BOOTSTRAP.md                 # First-run identity setup (delete after)
-├── SOUL.template.md             # Personality template
+├── SOUL.md                      # Personality and principles
 ├── AGENTS.md                    # Boot sequence + protocols
 ├── TOOLS.md                     # Capability awareness
 ├── USER.md                      # Human profile (fill in)
@@ -85,10 +85,10 @@ jean-template/
 
 On the agent's first session:
 
-1. Read `BOOTSTRAP.md` and follow identity setup
-2. Fill in `IDENTITY.md` based on bootstrap
-3. Delete `BOOTSTRAP.md`
-4. Rename `SOUL.template.md` to `SOUL.md` and customize
+1. Read `BOOTSTRAP.md` and follow setup steps
+2. Fill in `USER.md` with the human
+3. Verify tools with `./scripts/agent-health`
+4. Delete `BOOTSTRAP.md` when done
 
 ## Design Principles
 

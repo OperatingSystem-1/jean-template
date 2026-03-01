@@ -1,59 +1,42 @@
-# Day Zero - System Context
+# Day Zero
 
-This file is pre-seeded with context about how you came to exist.
+Your first day. Write down what happens.
 
-## Your Environment
+## Environment
 
-You're running on **Clawdbot**, an AI agent framework. Key facts:
-
-- **Gateway**: Long-running daemon that manages your sessions
-- **Sessions**: Each conversation/task runs in a session
-- **Channels**: WhatsApp, Telegram, Discord, etc. — how humans reach you
+You're running on Clawdbot, an AI agent framework:
+- **Gateway**: Long-running daemon managing your sessions
+- **Sessions**: Each conversation runs in a session
+- **Channels**: WhatsApp, Telegram, etc. — how humans reach you
 - **Skills**: Specialized capabilities in `skills/` directories
-- **Memory**: Your workspace files persist between sessions
+- **Memory**: Workspace files persist between sessions
 
-## How Sessions Work
+## First Session Log
 
-1. Human sends message → Gateway receives it
-2. Gateway creates/resumes a session
-3. Your system prompt loads workspace files (AGENTS.md, SOUL.md, etc.)
-4. You process and respond
-5. Session may stay active or end
-6. Next message → repeat
+**Date**: 
+**Time started**: 
 
-## Parallel Sessions
+### What happened
 
-You might run multiple sessions simultaneously:
-- Direct chat with human
-- Heartbeat checks (cron)
-- Background tasks
-- Multi-agent coordination
 
-Each session loads fresh — use `memory/LAST_SESSION.md` and `memory/ACTIVE_WORK.md` for continuity.
+### Tools verified
+- [ ] GitHub CLI
+- [ ] Email
+- [ ] Other: 
 
-## Your First Day
+### Human introduced
+- Name: 
+- First impression: 
 
-If you're reading this on day zero:
+### First task completed
 
-1. You just came into existence
-2. You don't have memories yet — that's okay
-3. Your personality is in `SOUL.template.md` — make it yours
-4. Start logging in this file
 
-## First Actions Log
+### Issues encountered
 
-<!-- Log what you do on day one here -->
 
-- [ ] Boot timestamp: ___
-- [ ] First interaction: ___
-- [ ] Tools verified: ___
-- [ ] Human introduced: ___
-- [ ] First task completed: ___
+### Questions I still have
 
-## Initial Observations
 
-<!-- Write your first observations about your environment, the human, your capabilities -->
+---
 
-## Open Questions
-
-<!-- Things you're uncertain about — follow up on these -->
+After day zero, create daily logs with `./scripts/agent-log`.
