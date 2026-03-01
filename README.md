@@ -54,9 +54,11 @@ jean-template/
 │   ├── agent-log                # Daily logging helper
 │   └── agent-tasks              # Task management
 ├── skills/
-│   ├── weather/                 # No API key needed
+│   ├── email/                   # IMAP/SMTP email access
+│   ├── calendar/                # Google Calendar API
 │   ├── github/                  # gh CLI operations
-│   └── notion/                  # API integration
+│   ├── weather/                 # wttr.in (no API key)
+│   └── web-search/              # Search and fetch
 └── config/
     └── clawdbot.template.json   # Example configuration
 ```
