@@ -9,6 +9,21 @@ A production-ready workspace template for AI agents running on Clawdbot.
 3. Run through `BOOTSTRAP.md` on first session (then delete it)
 4. Agent is ready to operate
 
+## Where This Lives
+
+On Jean's machine, this workspace lives at `/home/ubuntu/clawd/`. Clawdbot loads these files into the agent's system prompt at session start.
+
+Key paths:
+- **Workspace root**: `/home/ubuntu/clawd/`
+- **Memory files**: `/home/ubuntu/clawd/memory/`
+- **Skills**: `/home/ubuntu/clawd/skills/`
+- **Clawdbot config**: `~/.clawdbot/clawdbot.json`
+- **Secrets**: `~/.clawdbot/secrets/` (never in workspace)
+- **Browser profile**: `~/.clawdbot/browser/clawd/`
+- **Email credentials**: `~/.config/email/credentials.json`
+
+The workspace is the agent's "home directory" — persistent across sessions, version-controlled, and the source of truth for the agent's identity and protocols.
+
 ## Structure
 
 ```
