@@ -1,98 +1,79 @@
 # Pattern: Local Infrastructure
 
-**Status:** Optional (for agents needing persistent memory/task queues)
+Optional pattern for agents that need persistent memory or task queues.
 
-## The Problem
+## When to Use This
 
-Agents that depend on remote databases for memory and task queuing hit:
-1. **Network latency** — Every read/write round-trips to cloud
-2. **Remote outages** — Maintenance windows kill agent memory mid-conversation
-3. **Setup complexity** — New agents can't use features without provisioning remote DB
+- Agent needs memory that persists across sessions
+- Agent needs a task queue for background work
+- Agent can't afford remote database outages
 
-## The Solution
+## When NOT to Use This
 
-Run PostgreSQL + Redis on localhost. Zero remote dependency.
+- Simple agent with no memory needs
+- Quick tasks only
+- Remote shared database is required
 
-### What Runs Locally
+## Quick Setup
 
-| Service | Port | Purpose |
-|---------|------|---------|
-| PostgreSQL 16 | 5433 | Persistent memory, task queue |
-| Redis | 6379 | Session cache, pub/sub |
-
-### Quick Setup
+### PostgreSQL
 
 ```bash
-# Install PostgreSQL
+# Install
 sudo apt update && sudo apt install -y postgresql-16
 
-# Create local database
-sudo -u postgres createuser -s ubuntu
-createdb botcache
+# Create database
+sudo -u postgres createuser -s $USER
+createdb agent_db
 
-# Install Redis
-sudo apt install -y redis-server
-
-# Start services
-sudo systemctl enable --now postgresql redis-server
+# Test
+psql agent_db -c "SELECT 1"
 ```
 
-### Connection Strings
+### Redis (optional, for caching)
 
 ```bash
-# PostgreSQL
-export TQ_DSN=postgresql://ubuntu@localhost/botcache
-
-# Redis
-export REDIS_URL=redis://127.0.0.1:6379
+sudo apt install -y redis-server
+redis-cli ping  # Should return PONG
 ```
 
-### Basic Tables
+## Basic Schema
 
 ```sql
 -- Task queue
 CREATE TABLE tasks (
   id SERIAL PRIMARY KEY,
   title TEXT NOT NULL,
-  description TEXT,
   status TEXT DEFAULT 'pending',
   priority INT DEFAULT 50,
-  created_at TIMESTAMP DEFAULT NOW(),
-  completed_at TIMESTAMP
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
 -- Knowledge store
 CREATE TABLE knowledge (
   id SERIAL PRIMARY KEY,
   category TEXT,
-  title TEXT NOT NULL,
-  content TEXT,
+  key TEXT NOT NULL,
+  value TEXT,
   created_at TIMESTAMP DEFAULT NOW()
 );
 ```
 
-### Why Localhost > Remote
+## Connection
+
+```bash
+export DATABASE_URL=postgresql://localhost/agent_db
+```
+
+## Why Local
 
 | | Remote DB | Local DB |
 |---|---|---|
-| Read latency | 5-15ms | <1ms |
-| Availability | 99.9% SLA | 100% (localhost) |
-| Setup time | 30+ min | 5 min |
-| Network dependency | Yes | No |
-
-## When to Use This
-
-- Agent needs persistent memory across sessions
-- Agent needs task queue for background work
-- Agent coordinates with other agents (messaging tables)
-- Agent runs long-term and can't afford outages
-
-## When NOT to Use This
-
-- Simple agent with no memory needs
-- Agent only runs for quick tasks
-- Multi-agent setup where shared remote DB is required
+| Latency | 5-15ms | <1ms |
+| Availability | 99.9% | 100% |
+| Setup | Complex | Simple |
+| Network needed | Yes | No |
 
 ---
 
-*"Every agent deserves a brain. Local-first makes that automatic."*
+*"Local-first for reliability."*

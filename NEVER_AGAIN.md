@@ -1,97 +1,52 @@
-# NEVER AGAIN - Traumatic Learnings
+# NEVER AGAIN - Critical Mistakes
 
 **⚠️ READ THIS ON EVERY SESSION START ⚠️**
 
-These are behaviors that caused significant problems. They are permanent behavioral changes — you are incapable of repeating them.
+This file tracks mistakes that caused significant problems. Once added here, these become permanent behavioral rules.
 
 ---
 
-## ❌ NEVER: Start work without verified credentials
+## How to Use This File
 
-**What happens:**
-- Started task requiring GitHub/email/API access
-- Couldn't complete authentication → couldn't deliver
-- Wasted time, had to ask for help
+1. **Read on every session start** — primes your pattern matchers
+2. **Add entries when you make serious mistakes** — prevents repeating them
+3. **Never remove entries** — these are permanent learnings
+
+---
+
+## Template Entry
+
+When you make a significant mistake, add an entry like this:
+
+```markdown
+## ❌ NEVER: [Brief description]
+
+**Date:** YYYY-MM-DD
+
+**What happened:**
+[Describe the mistake and its consequences]
 
 **What to do instead:**
-```
-BEFORE starting ANY identity-dependent work:
-  1. List all required credentials
-  2. Verify access (gh auth status, test API call, etc.)
-  3. Request missing credentials IMMEDIATELY
-  4. Test complete auth flow
-  
-If ANY credential missing → STOP and request it
+[Clear rule for preventing this in the future]
 ```
 
 ---
 
-## ❌ NEVER: Claim "done" without verifying delivery
+## Your Entries
 
-**What happens:**
-- Claimed work was ready
-- Couldn't actually deliver (no auth, wrong path, etc.)
-- Had to backtrack and fix
-
-**What to do instead:**
-```
-BEFORE claiming "done" or "ready":
-  ✓ Tool access verified
-  ✓ Delivery path tested (push --dry-run, etc.)
-  ✓ Artifact accessible to recipient
-  
-NO verification → NOT done
-```
+<!-- Add entries below as you encounter critical mistakes -->
 
 ---
 
-## ❌ NEVER: Iterate blindly on failed auth
+## Common Patterns to Watch For
 
-**What happens:**
-- First auth attempt failed
-- Tried variations for 20+ minutes
-- Could have asked for correct credentials immediately
+These are common failure modes. If you hit one, add it as a full entry:
 
-**What to do instead:**
-```
-AFTER FIRST AUTH FAILURE:
-  1. Stop iterating
-  2. Ask for correct credentials NOW
-  3. Do NOT retry more than once
-```
-
----
-
-## ❌ NEVER: Create public repos with sensitive content
-
-**What happens:**
-- Created repo without `--private` flag
-- Sensitive content exposed publicly
-- Had to scramble to fix
-
-**What to do instead:**
-```
-WHEN creating repos:
-  1. ALWAYS use --private flag
-  2. Double-check visibility after creation
-  3. Default assumption: PRIVATE
-```
-
----
-
-## How This Works
-
-**Read NEVER_AGAIN.md on every session start** because:
-1. **Primes pattern matchers** - Triggers load before work begins
-2. **Reinforces behavioral rules** - Similar contexts trigger prevention
-3. **Takes <1 minute** - Prevents hours of repeated failures
-
-## Adding New Entries
-
-When you make a significant mistake:
-1. Create detailed entry here (what happened, what to do instead)
-2. Add corresponding rule to LESSONS.md
-3. These entries are PERMANENT — they never get removed
+- Starting work without verified credentials
+- Claiming "done" without testing delivery
+- Creating public repos with sensitive content
+- Iterating blindly on failed authentication
+- Overwhelming users with multiple questions
 
 ---
 

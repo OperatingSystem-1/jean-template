@@ -1,99 +1,70 @@
 # Pattern: Tooling Prerequisites
 
-**Status:** Critical (mandatory before any identity-dependent work)
+Verify credentials before starting work that depends on them.
 
 ## The Problem
 
-Agents start work that requires external authentication (GitHub, APIs, email verification), then hit a wall mid-task when they can't complete auth. This wastes time and creates dependency chains.
+Starting a task, then discovering mid-way that you can't complete it because authentication is missing or broken. This wastes time and creates frustration.
 
 ## The Solution
 
-**BEFORE starting any task that requires external credentials:**
+**Before starting any task that requires external access:**
 
-### Step 1: List Required Credentials
+### 1. List Required Credentials
+
 ```
 Task: "Push code to GitHub"
 Required:
-- [ ] GitHub CLI authenticated (gh auth status)
-- [ ] Git configured (git config user.email)
+- [ ] GitHub CLI authenticated
+- [ ] Git configured with email/name
 - [ ] Push access to target repo
 
-Task: "Send email report"
+Task: "Send email"
 Required:
-- [ ] IMAP credentials configured
-- [ ] SMTP access verified
-- [ ] Recipient address validated
+- [ ] IMAP/SMTP credentials configured
+- [ ] Connection tested
 ```
 
-### Step 2: Verify Each Credential
+### 2. Verify Each One
 
 ```bash
 # GitHub
 gh auth status
-# Expected: "Logged in to github.com account [username]"
 
-# Git
-git config user.email && git config user.name
-# Expected: Shows configured email and name
+# Git config
+git config user.email
 
 # Email
-python3 ~/clawd/skills/email/scripts/email_client.py list --limit 1
-# Expected: Returns email or empty list (not auth error)
+python3 scripts/email_client.py list --limit 1
 
 # Any API
-curl -H "Authorization: Bearer $TOKEN" https://api.example.com/verify
-# Expected: 200 OK (not 401/403)
+curl -H "Authorization: Bearer $TOKEN" https://api.example.com/health
 ```
 
-### Step 3: Stop on Missing Credentials
+### 3. Stop If Missing
 
-```
-IF any credential missing:
-  1. List what's missing
-  2. Ask human for credentials IMMEDIATELY
-  3. Do NOT start the task
-  4. Do NOT try variations/workarounds
-```
+If any credential is missing:
+1. List what's missing
+2. Ask for credentials immediately
+3. Do NOT start the task
+4. Do NOT try workarounds
 
-### Step 4: Test Full Flow
+### 4. Test Full Flow
 
 Don't just verify auth exists — test the complete operation:
 
 ```bash
-# Don't just check auth, test the action
-git push --dry-run origin main  # Test push access
-gh pr create --dry-run          # Test PR creation
+git push --dry-run origin main
 ```
 
-## Anti-Patterns
-
-❌ **Starting work optimistically**
-"I'll figure out auth when I get there"
-→ Wastes time when auth fails mid-task
-
-❌ **Iterating on failed auth**
-"Maybe it's this password... or this one..."
-→ Ask human after FIRST failure
-
-❌ **Claiming done without delivery verification**
-"Code is ready" (but can't push)
-→ Not done until actually delivered
-
-## Checklist Before Starting
+## Checklist
 
 ```
 □ Listed all required credentials
-□ Verified each credential works
-□ Tested full delivery path (not just auth)
-□ Ready to start work
+□ Verified each one works
+□ Tested full operation path
+□ Ready to start
 ```
-
-## Time Saved
-
-Following this pattern saves 15-30 minutes per incident by:
-- Not discovering auth issues mid-task
-- Not iterating through failed auth attempts
-- Not creating dependency chains on other agents
 
 ---
 
