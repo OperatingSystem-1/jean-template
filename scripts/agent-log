@@ -1,0 +1,37 @@
+#!/bin/bash
+# agent-log - Daily logging helper
+
+MEMORY_DIR="${1:-memory}"
+TODAY=$(date +%Y-%m-%d)
+LOG_FILE="$MEMORY_DIR/$TODAY.md"
+
+# Create memory dir if needed
+mkdir -p "$MEMORY_DIR"
+
+# Create today's log if it doesn't exist
+if [ ! -f "$LOG_FILE" ]; then
+    cat > "$LOG_FILE" << EOF
+# $TODAY
+
+## Summary
+
+[End of day summary goes here]
+
+## Sessions
+
+## Tasks
+
+## Learnings
+
+## Follow-ups
+
+EOF
+    echo "Created $LOG_FILE"
+else
+    echo "Log exists: $LOG_FILE"
+fi
+
+# Show recent entries
+echo ""
+echo "=== Recent Memory Files ==="
+ls -lt "$MEMORY_DIR"/*.md 2>/dev/null | head -5

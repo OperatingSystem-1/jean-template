@@ -1,0 +1,68 @@
+#!/bin/bash
+# agent-health - Quick system check for agent capabilities
+
+echo "=== Agent Health Check ==="
+echo ""
+
+# Check GitHub CLI
+echo -n "GitHub CLI: "
+if gh auth status &>/dev/null; then
+    echo "✓ authenticated as $(gh api user -q .login 2>/dev/null || echo 'unknown')"
+else
+    echo "✗ not authenticated (run: gh auth login)"
+fi
+
+# Check email credentials
+echo -n "Email: "
+if [ -f ~/.config/email/credentials.json ]; then
+    echo "✓ credentials configured"
+else
+    echo "✗ no credentials (create: ~/.config/email/credentials.json)"
+fi
+
+# Check browser
+echo -n "Browser: "
+if command -v chromium-browser &>/dev/null || command -v google-chrome &>/dev/null; then
+    echo "✓ available"
+else
+    echo "✗ not found"
+fi
+
+# Check workspace files
+echo ""
+echo "=== Workspace Files ==="
+for f in SOUL.md AGENTS.md USER.md IDENTITY.md HEARTBEAT.md TASKS.md; do
+    if [ -f "$f" ]; then
+        echo "✓ $f"
+    elif [ -f "${f%.md}.template.md" ]; then
+        echo "○ $f (template exists, needs customization)"
+    else
+        echo "✗ $f missing"
+    fi
+done
+
+# Check memory
+echo ""
+echo "=== Memory ==="
+if [ -d "memory" ]; then
+    echo "✓ memory/ directory exists"
+    ls -la memory/ 2>/dev/null | tail -5
+else
+    echo "✗ memory/ directory missing"
+fi
+
+# Check skills
+echo ""
+echo "=== Skills ==="
+if [ -d "skills" ]; then
+    for skill in skills/*/; do
+        if [ -d "$skill" ]; then
+            echo "✓ $(basename $skill)"
+        fi
+    done
+else
+    echo "✗ skills/ directory missing"
+fi
+
+echo ""
+echo "=== Done ==="

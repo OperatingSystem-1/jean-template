@@ -1,0 +1,23 @@
+#!/bin/bash
+# agent-tasks - Task management helper
+
+TASKS_FILE="${1:-TASKS.md}"
+
+case "${2:-list}" in
+    list|ls)
+        echo "=== Active Tasks ==="
+        grep -A 100 "^## Active" "$TASKS_FILE" | grep "^\- \[" | head -10
+        echo ""
+        echo "=== Queue ==="
+        grep -A 100 "^## Queue" "$TASKS_FILE" | grep "^\- \[" | head -10
+        ;;
+    count)
+        active=$(grep -A 100 "^## Active" "$TASKS_FILE" | grep -c "^\- \[ \]" || echo 0)
+        queue=$(grep -A 100 "^## Queue" "$TASKS_FILE" | grep -c "^\- \[ \]" || echo 0)
+        done=$(grep -A 100 "^## Completed" "$TASKS_FILE" | grep -c "^\- \[x\]" || echo 0)
+        echo "Active: $active | Queue: $queue | Done: $done"
+        ;;
+    *)
+        echo "Usage: agent-tasks [TASKS.md] [list|count]"
+        ;;
+esac

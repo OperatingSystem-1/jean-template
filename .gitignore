@@ -1,0 +1,39 @@
+# Secrets - never commit
+.env
+*.secret
+secrets/
+
+# Credentials
+credentials.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+
+# Temp
+tmp/
+temp/
+*.tmp
+
+# Node (if using scripts)
+node_modules/
+
+# Python (if using scripts)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# State files that shouldn't be committed
+heartbeat-state.json
